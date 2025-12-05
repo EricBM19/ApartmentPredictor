@@ -159,7 +159,7 @@ public class Owner {
 }
 ```
 
-## UML
+### UML
 
 Here are very brief, concrete `restaurant-related` examples for each **UML** class diagram relationship in [Class diagrams | Mermaid](https://mermaid.js.org/syntax/classDiagram.html):
 
@@ -200,13 +200,15 @@ CardPayment ..|> PaymentMethod : Realization
 Chef .. Kitchen : Link(Dashed)
 ```
 
-### UML V1.0 ApartmentPredictor
+#### UML V1.0 ApartmentPredictor
 
 - [UML mermaid](https://github.com/AlbertProfe/ApartmentPredictor/blob/master/docs/appends/ApartmentPredictor-uml_v1.md)
 
 ![](https://raw.githubusercontent.com/AlbertProfe/ApartmentPredictor/refs/heads/master/docs/diagrams/ApartmentPredictor-uml_v1.png)
 
-## Code: MC
+## Code
+
+### MC
 
 > This architecture defines a simple Spring Boot testing setup where a Test component exercises a `Service` layer that delegates to a `Repository`, which in turn <mark>performs CRUD operations against an in-memory/local H2 database. </mark>
 > 
@@ -214,7 +216,19 @@ Chef .. Kitchen : Link(Dashed)
 > 
 > The goal is to validate application logic and data access without external infrastructure, enabling fast, isolated tests.
 
-![](https://raw.githubusercontent.com/AlbertProfe/ApartmentPredictor/refs/heads/master/docs/diagrams/mermaid-diagram-2025-12-04-115507.png)
+![](https://raw.githubusercontent.com/AlbertProfe/ApartmentPredictor/refs/heads/master/docs/diagrams/mc_v1.png)
+
+### Service
+
+todo
+
+### Respository
+
+todo
+
+### Tests JUnit
+
+todo
 
 ## H2 & application.properties
 
@@ -249,12 +263,14 @@ Chef .. Kitchen : Link(Dashed)
   #spring.jpa.hibernate.ddl-auto=create
   spring.jpa.hibernate.ddl-auto=update
   ```
-  
-  This [application.properties](cci:7://file:///home/albert/MyProjects/Sandbox/rentingCarTest/rentingCar-boot/src/main/resources/application.properties:0:0-0:0) file configures a Spring Boot application for aparment price predictor management with H2 database integration.
-  Application Identity
+
+This [application.properties](cci:7://file:///home/albert/MyProjects/Sandbox/rentingCarTest/rentingCar-boot/src/main/resources/application.properties:0:0-0:0) file configures a Spring Boot application for aparment price predictor management with H2 database integration.
+
+Application Identity
 
 - **`spring.application.name=ApartmentPredictor`** - Sets the application name used for identification in logs, monitoring tools, and service discovery. This appears in Spring Boot banners and helps distinguish this app from others.
-  Database Configuration
+
+Database Configuration
 
 - **H2 Database Setup** - Uses H2 as an embedded/file-based database
 
@@ -271,10 +287,10 @@ Chef .. Kitchen : Link(Dashed)
 - **Password**: `1234` (simple password for development)
   JPA/Hibernate Settings
 
+Database Dialect and DDL
+
 - **`spring.jpa.database-platform=org.hibernate.dialect.H2Dialect`** - Tells Hibernate to use H2-specific SQL syntax
-
 - **`spring.jpa.show-sql=true`** - Enables SQL query logging for debugging
-
 - **`spring.jpa.hibernate.ddl-auto=update`** - Automatically updates database schema without dropping existing data (safer than `create` which recreates tables)
 
 ## Maven
