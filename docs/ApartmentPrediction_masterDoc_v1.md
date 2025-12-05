@@ -206,7 +206,88 @@ Chef .. Kitchen : Link(Dashed)
 
 ![](https://raw.githubusercontent.com/AlbertProfe/ApartmentPredictor/refs/heads/master/docs/diagrams/ApartmentPredictor-uml_v1.png)
 
-## pom.xml
+## Code: MC
+
+> This architecture defines a simple Spring Boot testing setup where a Test component exercises a `Service` layer that delegates to a `Repository`, which in turn <mark>performs CRUD operations against an in-memory/local H2 database. </mark>
+> 
+> **It is MC (Model-Controller) layered**, with Test invoking Service (buisness logic) → Repository (data access) → DB, enforcing s<mark>eparation of concerns. </mark>
+> 
+> The goal is to validate application logic and data access without external infrastructure, enabling fast, isolated tests.
+
+![](https://raw.githubusercontent.com/AlbertProfe/ApartmentPredictor/refs/heads/master/docs/diagrams/mermaid-diagram-2025-12-04-115507.png)
+
+## H2 & application.properties
+
+> Welcome to **H2**, the Java SQL database. The main features of H2 are:
+> 
+> - Very fast, open source, `JDBC API`
+> - Embedded and server modes; in-memory databases
+> - Browser based Console application
+> - Small footprint: around <mark>2.5 MB jar file size</mark>
+
+- Official web: https://h2database.com/html/installation.html
+
+- Create H2 db from CLI: [Lab#SB08-3: H2 and API Rest – albertprofe wiki](https://albertprofe.dev/springboot/sblab8-3.html#h2-db)
+
+- Step-by-step: [Spring Boot: H2 DB and Thymeleaf – albertprofe wiki](https://albertprofe.dev/springboot/boot-what-create-th-h2.html)
+
+- DDL: [Spring Boot: H2 DB and Thymeleaf – albertprofe wiki](https://albertprofe.dev/springboot/boot-what-create-th-h2.html)
+
+Config `applcations properties` :
+
+```properties
+spring.application.name=ApartmentPredictor
+#spring.datasource.url=jdbc:h2:tcp://localhost/~/MyProjects/Sandbox/ApartmentPredictorProject/db/rapartmentpredictordb
+spring.datasource.url=jdbc:h2:/home/albert/MyProjects/Sandbox/ApartmentPredictorProject/db/apartmentpredictordb
+#spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=albert
+#spring.datasource.username=sa
+spring.datasource.password=1234
+#spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.show-sql=true
+#spring.jpa.hibernate.ddl-auto=create
+spring.jpa.hibernate.ddl-auto=update
+```
+
+This [application.properties](cci:7://file:///home/albert/MyProjects/Sandbox/rentingCarTest/rentingCar-boot/src/main/resources/application.properties:0:0-0:0) file configures a Spring Boot application for apartment price predictor management with H2 database integration.
+
+Application Identity:
+
+- **`spring.application.name=ApartmentPredictor`** - Sets the application name used for identification in logs, monitoring tools, and service discovery. This appears in Spring Boot banners and helps distinguish this app from others.
+  Database Configuration
+
+- **H2 Database Setup** - Uses H2 as an embedded/file-based database
+
+- **Active URL**: `jdbc:h2:/home/albert/MyProjects/Sandbox/ApartmentPredictorProject/db/apartmentpredictordb` - Points to a persistent file-based H2 database stored locally
+
+- **Commented alternatives**:
+  
+  - TCP server mode: `jdbc:h2:tcp://localhost/...` (for remote access)
+  - In-memory mode: `jdbc:h2:mem:testdb` (data lost on restart)
+    Authentication
+
+- **Username**: `albert` (custom user, `sa` is H2's default admin)
+
+- **Password**: `1234` (simple password for development)
+  JPA/Hibernate Settings
+
+- **`spring.jpa.database-platform=org.hibernate.dialect.H2Dialect`** - Tells Hibernate to use H2-specific SQL syntax
+
+- **`spring.jpa.show-sql=true`** - Enables SQL query logging for debugging
+
+- **`spring.jpa.hibernate.ddl-auto=update`** - Automatically updates database schema without dropping existing data (safer than `create` which recreates tables)
+
+## Maven
+
+> **Apache Maven** is a <mark>build tool for Java projects</mark>. Using a <mark>project object model </mark>(`POM`), Maven manages a project's compilation, testing, and documentation.
+
+- [Maven](https://maven.apache.org/)
+
+- [Maven Repository](https://mvnrepository.com/)
+
+### pom.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
