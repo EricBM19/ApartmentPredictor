@@ -1,10 +1,14 @@
-package com.example.apartment_predictor;
+package com.example.apartment_predictor.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
+@Entity
 public class Review {
 
-    // To do: Add entity anotation
+    @Id
     private String id;
     private String reviewText;
     private int rating;
