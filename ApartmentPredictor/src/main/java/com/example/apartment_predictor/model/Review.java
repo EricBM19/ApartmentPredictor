@@ -3,6 +3,8 @@ package com.example.apartment_predictor.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import com.example.apartment_predictor.model.Apartment;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -16,7 +18,10 @@ public class Review {
     private String content;
     private int rating;
     private LocalDate reviewDate;
-    //private Apartment apartment;
+    @JoinColumn(name = "apartment_fk")
+    @ManyToOne
+    private Apartment apartment;
+
 
     public Review() {
         this.id = UUID.randomUUID().toString();

@@ -2,7 +2,9 @@ package com.example.apartment_predictor.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,7 +27,8 @@ public class Apartment {
     private String prefarea;
     private String furnishingstatus;
 
-    //private List<Review> reviews;
+    @OneToMany(mappedBy = "apartment")
+    private List<Review> reviews = new ArrayList<>();
 
     // Default constructor
     public Apartment() {
@@ -168,13 +171,13 @@ public class Apartment {
         this.id = id;
     }*/
 
-   /* public List<Review> getReviews() {
+   public List<Review> getReviews() {
         return reviews;
     }
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
-    }*/
+    }
 
     @Override
     public String toString() {
@@ -193,6 +196,7 @@ public class Apartment {
                 ", parking=" + parking +
                 ", prefarea='" + prefarea + '\'' +
                 ", furnishingstatus='" + furnishingstatus + '\'' +
+                ", reviews='" + reviews.size() + '\'' +
                 '}';
     }
 }
