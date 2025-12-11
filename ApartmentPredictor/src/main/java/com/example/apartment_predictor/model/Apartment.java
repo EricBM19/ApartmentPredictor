@@ -3,6 +3,8 @@ package com.example.apartment_predictor.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.util.UUID;
+
 @Entity
 public class Apartment {
 
@@ -31,6 +33,7 @@ public class Apartment {
                     Integer stories, String mainroad, String guestroom, String basement,
                     String hotwater, String heating, String airconditioning, 
                     Integer parking, String prefarea, String furnishingstatus) {
+        this.id = "AP" + UUID.randomUUID().toString();
         this.price = price;
         this.area = area;
         this.bedrooms = bedrooms;
