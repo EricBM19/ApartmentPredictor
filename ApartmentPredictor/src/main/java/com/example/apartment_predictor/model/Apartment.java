@@ -1,5 +1,6 @@
 package com.example.apartment_predictor.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -27,7 +28,7 @@ public class Apartment {
     private String prefarea;
     private String furnishingstatus;
 
-    @OneToMany(mappedBy = "apartment")
+    @OneToMany(mappedBy = "apartment", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
     // Default constructor
@@ -196,7 +197,6 @@ public class Apartment {
                 ", parking=" + parking +
                 ", prefarea='" + prefarea + '\'' +
                 ", furnishingstatus='" + furnishingstatus + '\'' +
-                ", reviews='" + reviews.size() + '\'' +
                 '}';
     }
 }

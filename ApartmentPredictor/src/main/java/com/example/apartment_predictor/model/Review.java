@@ -1,10 +1,7 @@
 package com.example.apartment_predictor.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import com.example.apartment_predictor.model.Apartment;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -18,8 +15,8 @@ public class Review {
     private String content;
     private int rating;
     private LocalDate reviewDate;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "apartment_fk")
-    @ManyToOne
     private Apartment apartment;
 
 
