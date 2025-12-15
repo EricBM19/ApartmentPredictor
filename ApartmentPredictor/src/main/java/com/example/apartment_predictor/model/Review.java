@@ -2,44 +2,57 @@ package com.example.apartment_predictor.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 public class Review {
 
     @Id
     private String id;
-    private String reviewText;
+    private String title;
+    private String content;
     private int rating;
     private LocalDate reviewDate;
 
-    //To do: Add relationship anotation
-    private String apartmentId;
-    private String reviewerId;
+    @JoinColumn(name = "apartment_fk")
+    @ManyToOne
+    private Apartment apartment;
 
-    public Review() {}
+    public Review() {
+        this.id = UUID.randomUUID().toString();
+    }
 
-    //To do: Call/create method to generate automatic UUID for ID
-    public Review(String reviewText, int rating, LocalDate reviewDate, String apartmentId, String reviewerId) {
-        //this.id = generateUUID;
-        this.reviewText = reviewText;
+    public Review(String title, String content, int rating, LocalDate reviewDate) {
+        this.id = UUID.randomUUID().toString();
+        this.title = title;
+        this.content = content;
         this.rating = rating;
         this.reviewDate = reviewDate;
-        this.apartmentId = apartmentId;
-        this.reviewerId = reviewerId;
     }
+
 
     public String getId() {
         return id;
     }
 
-    public String getReviewText() {
-        return reviewText;
+    public String getTitle() {
+        return title;
     }
 
-    public void setReviewText(String reviewText) {
-        this.reviewText = reviewText;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getRating() {
@@ -58,31 +71,22 @@ public class Review {
         this.reviewDate = reviewDate;
     }
 
-    public String getApartmentId() {
-        return apartmentId;
+    public Apartment getApartment() {
+        return apartment;
     }
 
-    public void setApartmentId(String apartmentId) {
-        this.apartmentId = apartmentId;
-    }
-
-    public String getReviewerId() {
-        return reviewerId;
-    }
-
-    public void setReviewerId(String reviewerId) {
-        this.reviewerId = reviewerId;
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
     }
 
     @Override
     public String toString() {
         return "Review{" +
                 "id='" + id + '\'' +
-                ", reviewText='" + reviewText + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
                 ", rating=" + rating +
                 ", reviewDate=" + reviewDate +
-                ", apartmentId='" + apartmentId + '\'' +
-                ", reviewerId='" + reviewerId + '\'' +
                 '}';
     }
 }

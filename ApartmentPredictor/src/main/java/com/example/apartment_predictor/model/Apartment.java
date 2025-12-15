@@ -1,8 +1,9 @@
 package com.example.apartment_predictor.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -25,15 +26,20 @@ public class Apartment {
     private String prefarea;
     private String furnishingstatus;
 
+    @OneToMany (mappedBy = "apartment", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Review> reviews = new ArrayList<>();
+
     // Default constructor
-    public Apartment() {}
+    public Apartment() {
+        this.id = UUID.randomUUID().toString();
+    }
 
     // Constructor with all fields
     public Apartment(Long price, Integer area, Integer bedrooms, Integer bathrooms, 
                     Integer stories, String mainroad, String guestroom, String basement,
                     String hotwater, String heating, String airconditioning, 
                     Integer parking, String prefarea, String furnishingstatus) {
-        this.id = "AP" + UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().toString();
         this.price = price;
         this.area = area;
         this.bedrooms = bedrooms;
