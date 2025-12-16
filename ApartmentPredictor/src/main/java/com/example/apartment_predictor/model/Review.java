@@ -18,10 +18,6 @@ public class Review {
     private String content;
     private int rating;
     private LocalDate reviewDate;
-    @JoinColumn(name = "apartment_fk")
-    @ManyToOne
-    private Apartment apartment;
-
 
     public Review() {
         this.id = UUID.randomUUID().toString();
@@ -84,14 +80,6 @@ public class Review {
 
     public void setReviewDate(LocalDate reviewDate) {
         this.reviewDate = reviewDate;
-    }
-
-    public Apartment getApartment() {
-        return apartment;
-    }
-
-    public void setApartment(Apartment apartment) {
-        this.apartment = apartment;
     }
 
     @Override
