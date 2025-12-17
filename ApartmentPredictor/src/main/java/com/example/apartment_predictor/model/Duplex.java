@@ -7,6 +7,8 @@ public class Duplex extends SingleFamilyHome{
 
     private boolean hasSeparatedUtilities;
 
+    public Duplex() {}
+
     public Duplex(double area, int locationRating, String address, int numberOfBedrooms, int numberOfBathrooms, boolean hasGarden, double lotSize, boolean hasGarage, boolean hasPool, boolean hasSeparatedUtilities) {
         super(area, locationRating, address, numberOfBedrooms, numberOfBathrooms, hasGarden, lotSize, hasGarage, hasPool);
         this.hasSeparatedUtilities = hasSeparatedUtilities;
@@ -26,5 +28,12 @@ public class Duplex extends SingleFamilyHome{
 
         if (super.isSuitableForFamily(familySize) && familySize >= 4) return true;
         else return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Duplex{" +
+                "hasSeparatedUtilities=" + hasSeparatedUtilities +
+                '}';
     }
 }

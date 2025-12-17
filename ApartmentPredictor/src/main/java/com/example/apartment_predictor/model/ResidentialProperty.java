@@ -9,6 +9,8 @@ public abstract class ResidentialProperty extends Property{
     protected int numberOfBathrooms;
     protected boolean hasGarden;
 
+    public ResidentialProperty() {}
+
     public ResidentialProperty(double area, int locationRating, String address, int numberOfBedrooms, int numberOfBathrooms, boolean hasGarden) {
         super(area, locationRating, address);
         this.numberOfBedrooms = numberOfBedrooms;
@@ -52,5 +54,14 @@ public abstract class ResidentialProperty extends Property{
             return true;
         }
         else return false;
+    }
+
+    @Override
+    public String toString() {
+        return "ResidentialProperty{" +
+                "numberOfBedrooms=" + numberOfBedrooms +
+                ", numberOfBathrooms=" + numberOfBathrooms +
+                ", hasGarden=" + hasGarden +
+                '}';
     }
 }

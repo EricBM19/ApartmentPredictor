@@ -7,7 +7,7 @@ public class House extends SingleFamilyHome{
 
     private boolean hasBasement;
 
-
+    public House() {}
 
     public House(double area, int locationRating, String address, int numberOfBedrooms, int numberOfBathrooms, boolean hasGarden, double lotSize, boolean hasGarage, boolean hasPool, boolean hasBasement) {
         super(area, locationRating, address, numberOfBedrooms, numberOfBathrooms, hasGarden, lotSize, hasGarage, hasPool);
@@ -37,5 +37,12 @@ public class House extends SingleFamilyHome{
             return true;
         }
         else return false;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "hasBasement=" + hasBasement +
+                '}';
     }
 }

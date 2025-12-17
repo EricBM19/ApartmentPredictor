@@ -7,7 +7,6 @@ import jakarta.persistence.Inheritance;
 import java.util.UUID;
 
 @Entity
-@Inheritance ()
 public abstract class Property {
 
     @Id

@@ -8,6 +8,8 @@ public class Townhouse extends SingleFamilyHome{
     private boolean hasHomeownersAssociation;
     private double hoaMonthlyFee;
 
+    public Townhouse() {}
+
     public Townhouse(double area, int locationRating, String address, int numberOfBedrooms, int numberOfBathrooms, boolean hasGarden, double lotSize, boolean hasGarage, boolean hasPool, boolean hasHomeownersAssociation, double hoaMonthlyFee) {
         super(area, locationRating, address, numberOfBedrooms, numberOfBathrooms, hasGarden, lotSize, hasGarage, hasPool);
         this.hasHomeownersAssociation = hasHomeownersAssociation;
@@ -42,5 +44,13 @@ public class Townhouse extends SingleFamilyHome{
             return true;
         }
         else return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Townhouse{" +
+                "hasHomeownersAssociation=" + hasHomeownersAssociation +
+                ", hoaMonthlyFee=" + hoaMonthlyFee +
+                '}';
     }
 }
