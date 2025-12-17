@@ -6,6 +6,13 @@ public abstract class ResidentialProperty extends Property{
     protected int numberOfBathrooms;
     protected boolean hasGarden;
 
+    public ResidentialProperty(double area, int locationRating, String address, int numberOfBedrooms, int numberOfBathrooms, boolean hasGarden) {
+        super(area, locationRating, address);
+        this.numberOfBedrooms = numberOfBedrooms;
+        this.numberOfBathrooms = numberOfBathrooms;
+        this.hasGarden = hasGarden;
+    }
+
     public int getNumberOfBedrooms() {
         return numberOfBedrooms;
     }
@@ -30,16 +37,17 @@ public abstract class ResidentialProperty extends Property{
         this.hasGarden = hasGarden;
     }
 
-    @Override
-    public String toString() {
-        return "ResidentialProperty{" +
-                "id='" + id + '\'' +
-                ", area=" + area +
-                ", locationRating=" + locationRating +
-                ", address='" + address + '\'' +
-                ", hasGarden=" + hasGarden +
-                ", numberOfBathrooms=" + numberOfBathrooms +
-                ", numberOfBedrooms=" + numberOfBedrooms +
-                '}';
+    // Method that compares the number of rooms from a property to find out if it's suitable for a family.
+    // For each room we can have 1-2 people.
+    // for each bathroom we can have max 3 people.
+    public boolean isSuitableForFamily(int familySize) {
+
+        int maxPeopleForBedroom = 2;
+        int maxPeopleForBathroom = 3;
+
+        if ((double) numberOfBedrooms/familySize <= maxPeopleForBedroom && (double) numberOfBathrooms/familySize <= maxPeopleForBathroom) {
+            return true;
+        }
+        else return false;
     }
 }
