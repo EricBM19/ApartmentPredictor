@@ -1,5 +1,8 @@
 package com.example.apartment_predictor.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Townhouse extends SingleFamilyHome{
 
     private boolean hasHomeownersAssociation;
@@ -35,7 +38,7 @@ public class Townhouse extends SingleFamilyHome{
         int maxPeopleForBedroom = 2;
         int maxPeopleForBathroom = 2;
 
-        if ((double) numberOfBedrooms/familySize <= maxPeopleForBedroom && (double) numberOfBathrooms/familySize <= maxPeopleForBathroom) {
+        if ((double) familySize/numberOfBedrooms <= maxPeopleForBedroom && (double) familySize/numberOfBathrooms <= maxPeopleForBathroom) {
             return true;
         }
         else return false;

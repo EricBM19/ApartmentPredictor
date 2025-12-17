@@ -1,5 +1,8 @@
 package com.example.apartment_predictor.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Apartment extends ResidentialProperty{
 
     private int floorLevel;

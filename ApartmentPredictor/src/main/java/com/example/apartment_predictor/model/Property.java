@@ -1,9 +1,13 @@
 package com.example.apartment_predictor.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
 
 import java.util.UUID;
 
+@Entity
+@Inheritance ()
 public abstract class Property {
 
     @Id

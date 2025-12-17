@@ -1,5 +1,8 @@
 package com.example.apartment_predictor.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class House extends SingleFamilyHome{
 
     private boolean hasBasement;
@@ -30,7 +33,7 @@ public class House extends SingleFamilyHome{
 
         if (hasBasement) numberOfBedrooms++;
 
-        if ((double) numberOfBedrooms/familySize <= maxPeopleForBedroom && (double) numberOfBathrooms/familySize <= maxPeopleForBathroom) {
+        if ((double) familySize/numberOfBedrooms <= maxPeopleForBedroom && (double) familySize/numberOfBathrooms <= maxPeopleForBathroom) {
             return true;
         }
         else return false;
