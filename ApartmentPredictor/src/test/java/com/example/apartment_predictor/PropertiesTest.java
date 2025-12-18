@@ -1,19 +1,21 @@
 package com.example.apartment_predictor;
 
 import com.example.apartment_predictor.model.*;
+import com.example.apartment_predictor.repository.ApartmentRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootTest
 public class PropertiesTest {
 
+    @Autowired
+    ApartmentRepository apartmentRepository;
+
     @Test
     void testIsSuitableForFamilyApartmentVariation() {
 
-        //Apartments
+        //Apartments (max 2p x room && max 3p x bathroom)
         System.out.println("Apartments results:");
 
         // Case 1:
@@ -47,7 +49,7 @@ public class PropertiesTest {
     @Test
     void testIsSuitableForFamilyHouseVariation() {
 
-        //House
+        //House (max 2p x room && max 2p x bathroom && hasBasement = room++)
         System.out.println("Houses results:");
 
         // Case 1:
@@ -73,18 +75,18 @@ public class PropertiesTest {
         // Case 3:
         // 1 rooms (max 2p) 2 bathrooms (max 4p) hasBasement (true) familySize: 3
         // Result: false
-        ResidentialProperty house3 = new House();
-        house3.setNumberOfBedrooms(2);
-        house3.setNumberOfBathrooms(3);
+        Property house3 = new House();
+        ((House) house3).setNumberOfBedrooms(2);
+        ((House) house3).setNumberOfBathrooms(3);
         ((House) house3).setHasBasement(false);
 
-        System.out.println(house3.isSuitableForFamily(5));
+        System.out.println(((House) house3).isSuitableForFamily(5));
     }
 
     @Test
     void testIsSuitableForFamilyTownhouseVariation() {
 
-        //Townhouse
+        //Townhouse (max 2p x room && max 2p x bathroom)
         System.out.println("Townhouses results:");
 
         // Case 1:
@@ -118,7 +120,7 @@ public class PropertiesTest {
     @Test
     void testIsSuitableForFamilyDuplexVariation() {
 
-        //Duplex
+        //Duplex (max 2p x room && max 3p x bathroom && familySize >= 4p)
         System.out.println("Duplex results:");
 
         // Case 1:
@@ -139,7 +141,7 @@ public class PropertiesTest {
 
         System.out.println(((Duplex) duplex2).isSuitableForFamily(3));
 
-        // Case 2:
+        // Case 3:
         // 2 rooms (max 4p) 1 bathroom (max 3p) familySize: 4 == 4
         // Result: false
         Property duplex3 = new Duplex();
