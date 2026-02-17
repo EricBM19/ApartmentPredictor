@@ -176,8 +176,7 @@ public class PopulateDB {
         return true;
     }
 
-
-
+    // ---------- POPULATE reviews, reviewers ------------------------------
 
     public int populateReviews(int qty) {
         return 0;
@@ -186,6 +185,16 @@ public class PopulateDB {
     public int populateReviewers(int qty) {
         return 0;
     }
+
+    public boolean assignReviewersToReviews(){
+        return true;
+    }
+
+    public boolean assignReviewsToApartments(){
+        return true;
+    }
+
+    // ---------- POPULATE owners, property contracts ------------------------------
 
     public int populateOwners(int qty) {
         return 0;
