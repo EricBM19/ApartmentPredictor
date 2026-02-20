@@ -53,7 +53,9 @@ public class PopulateDB {
 
 
         // 8 populate Owners
+        List<Owner> owners = populateOwners(qty);
         // 9 populate PropertyContracts assign Owners and Apartments
+        List<PropertyContract> propertyContracts = populatePropertyContracts(qty);
         // 10 check and return qty of created objects
 
 
@@ -376,11 +378,11 @@ public class PopulateDB {
 
     // ---------- POPULATE owners, property contracts ------------------------------
 
-    public int populateOwners(int qty) {
-        return 0;
+    public List<Owner> populateOwners(int qty) {
+        return null;
     }
 
-    public int populatePropertyContracts(int qty) {
-        return 0;
+    public List<PropertyContract> populatePropertyContracts(int qty) {
+        return null;
     }
 }
